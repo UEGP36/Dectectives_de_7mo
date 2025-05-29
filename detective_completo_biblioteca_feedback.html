@@ -1,0 +1,196 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Detective Escolar: Misión Interprovincial</title>
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; background: #fffbe6; color: #1f2937; padding: 20px; text-align: center; }
+    .pantalla { display: none; }
+    .visible { display: block; }
+    button {
+      padding: 12px 24px;
+      margin: 20px;
+      font-size: 18px;
+      background: #b45309;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .texto, .pregunta {
+      background: #fef3c7;
+      padding: 20px;
+      margin: 20px auto;
+      border-radius: 10px;
+      max-width: 800px;
+      text-align: left;
+      overflow-y: auto;
+    }
+    input[type="radio"] { margin-right: 8px; }
+    img.logo { max-width: 150px; margin-top: 10px; }
+  </style>
+</head>
+<body>
+
+  <div class="pantalla visible" id="pantallaInicio">
+    <h1 style="font-size: 48px;">BIBLIOTECA</h1>
+    <img class="logo" src="https://i.postimg.cc/G9nrd3FL/Copia-escudo-PNG.png" alt="Escudo del Colegio"/>
+    <p style="margin-top: 20px;">Una aventura educativa para futuros detectives 🕵️‍♂️📚</p>
+    <button onclick="mostrarPantalla('pantalla1')">Comenzar</button>
+  </div>
+
+  <div class="pantalla" id="pantalla1">
+    <h2>🟦 Pantalla 1 – El caso del viajero fantasma</h2>
+    <div class="texto">
+      Era una mañana lluviosa en la ciudad cuando recibiste un mensaje urgente de la agencia D.A.E. (Detectives Argentinos Escolares). El informe decía que un sospechoso, con antecedentes de tráfico de objetos históricos, había abordado un vuelo nacional desde el aeropuerto local. Fue visto por última vez conversando con una mujer mayor en la sala de espera. No parecía nervioso, pero sí muy concentrado, como si estuviera ejecutando un plan.<br><br>
+      Los agentes que lo rastrearon dejaron una pista importante: el sospechoso mencionó que viajaría a una provincia que limita con Corrientes, Formosa, Santiago del Estero, Santa Fe y Salta. Además, dijo algo sobre los colores de su bandera: verde, blanco y celeste. Una combinación que llamó la atención del personal del aeropuerto, ya que no es común.<br><br>
+      Tu misión como detective escolar es identificar correctamente el destino del sospechoso. Pero hay una condición: no hay margen para el error. Si fallás, perderás el rastro. Si acertás, estarás un paso más cerca de resolver el caso. 
+    </div>
+    <div class="pregunta">
+      <p><strong>¿A qué provincia viajó el sospechoso?</strong></p>
+      <label><input type="radio" name="q1" value="correct">Chaco</label><br>
+      <label><input type="radio" name="q1" value="wrong">Corrientes</label><br>
+      <label><input type="radio" name="q1" value="wrong">Buenos Aires</label><br>
+      <label><input type="radio" name="q1" value="wrong">Santa Cruz</label>
+    </div>
+    <button onclick="validar('q1', 'pantalla2', true)">Siguiente</button>
+  </div>
+
+  <div class="pantalla" id="pantalla2">
+    <h2>🟩 Pantalla 2 – El enigma de Jaime, el portero del aeropuerto</h2>
+    <div class="texto">
+      Aterrizás en Resistencia. El calor chaqueño se siente en el aire apenas bajás del avión. Es un clima húmedo, con ese olor a tierra mojada que solo se percibe en lugares con selva baja y monte. Te recibe un sol fuerte, aunque son apenas las 9 de la mañana.<br><br>
+      Te dirigís al hall del aeropuerto. La gente va y viene, entre valijas, familias y anuncios de vuelos. Revisás tu cuaderno de notas. Según los informes, el sospechoso aterrizó allí hace menos de 12 horas. No hay cámaras disponibles, pero un empleado dejó un mensaje para la agencia: “Jaime – portero del aeropuerto – vio algo.”<br><br>
+      Buscás su nombre en el mostrador de atención y te lo señalan. Lo encontrás tomando mate en la entrada de la zona de carga. Tiene una sonrisa amable y una gorra del Club Sarmiento.<br><br>
+      —¿Vos sos el o la detective? —te pregunta, sin dejar de cebar.<br><br>
+      Asentís. Jaime mira para los costados y se inclina un poco hacia vos, como si supiera algo importante.<br><br>
+      —Lo vi, sí. Ayer a la noche. Estaba nervioso. Caminaba apurado, pero hablaba por teléfono y se le escapó una frase rara… algo así como “dejé todo en el lugar donde vive la gente”. Me quedé pensando y anoté algo en un papel, por si te sirve —dice, y te pasa un trozo de servilleta escrita a mano.<br><br>
+      La frase dice:<br>
+      “A veces es grande, a veces chico,<br>
+      puede ser de piedra, de barro o de ladrillo,<br>
+      las personas viven en él… ¿qué es?”<br><br>
+      —¿Te dice algo eso? Yo creo que ese tipo no se iba a quedar en cualquier lado. Si me apurás, para mí se fue al <b>hospedaje</b> de enfrente. Pero vos sabrás… —te dice, guiñándote un ojo.
+    </div>
+    <div class="pregunta">
+      <p>¿Qué palabra representa también un lugar donde las personas se alojan, como un hospedaje?</p>
+      <label><input type="radio" name="q2" value="correct">Un hotel</label><br>
+      <label><input type="radio" name="q2" value="wrong">Una piedra</label><br>
+      <label><input type="radio" name="q2" value="wrong">Una montaña</label><br>
+      <label><input type="radio" name="q2" value="wrong">Una escuela</label>
+    </div>
+    <button onclick="validar('q2', 'pantalla3', false)">Siguiente</button>
+  </div>
+
+  <div class="pantalla" id="pantalla3">
+    <h2>🟨 Pantalla 3 – El cálculo de la habitación</h2>
+    <div class="texto">
+      Te acercás al hospedaje. Mostrás tu credencial y preguntás si alguien con las características del sospechoso se registró en las últimas horas. El recepcionista asiente, pero con una condición: para darte el número de habitación, debés resolver un mensaje que dejó el huésped como contraseña.<br><br>
+      Te entrega un papel con el siguiente cálculo: <br><br>
+      <strong>“(12 × 4) + 36 ÷ 6 – 3”</strong><br><br>
+      Sabés que resolver este acertijo correctamente es la única forma de encontrarlo a tiempo.
+    </div>
+    <div class="pregunta">
+      <p>¿Cuál es el resultado correcto?</p>
+      <label><input type="radio" name="q3" value="correct">51</label><br>
+      <label><input type="radio" name="q3" value="wrong">45</label><br>
+      <label><input type="radio" name="q3" value="wrong">36</label><br>
+      <label><input type="radio" name="q3" value="wrong">27</label>
+    </div>
+    <button onclick="validar('q3', 'pantalla4', false)">Finalizar</button>
+  </div>
+
+  <div class="pantalla" id="pantalla4">
+    <h2>🟥 Pantalla 4 – Resolución del caso</h2>
+    <div class="texto">
+      Subís al quinto piso. Cada paso por el pasillo alfombrado suena más fuerte en tu cabeza. Sentís que estás a punto de cerrar el caso. Al llegar a la habitación 51, deslizás la tarjeta magnética y se escucha un clic. La puerta se abre lentamente.<br><br>
+      Adentro, el cuarto está ordenado, pero con signos de una salida apresurada. Sobre la cama, una valija abierta. En el escritorio, una notebook encendida. Y sobre la mesa, una carta sin sobre. Te acercás y comenzás a leer:<br><br>
+      “Si estás leyendo esto, lograste seguir mis pistas. Te subestimé. Pero todavía no me atrapaste. Dejé algo importante aquí, algo que revela mis planes. Te lo entrego por respeto a tu inteligencia. Lo que hagas con esta información, queda en tus manos.”<br><br>
+      Revisás la valija: hay pasaportes falsos, varios documentos, dinero de distintos países y una agenda con anotaciones sobre futuros movimientos sospechosos. También encontrás una tarjeta con el logo de una organización internacional y un código encriptado.<br><br>
+      El caso está resuelto. Lograste interceptar al sospechoso antes de que cruzara la frontera. Lo más importante: usaste tus habilidades, tus conocimientos escolares y tu capacidad de razonar.<br><br>
+      Estás por cerrar la puerta cuando te suena el comunicador.<br><br>
+      “¡Excelente trabajo, agente! La Agencia D.A.E. está orgullosa de vos. Prepárate: pronto habrá otra misión…”<br><br>
+      Sonreís. La aventura continúa.
+    </div>
+    <button onclick="window.location.reload()">Volver a jugar</button>
+  </div>
+
+  <script>
+    function mostrarPantalla(id) {
+      document.querySelectorAll('.pantalla').forEach(p => p.classList.remove('visible'));
+      document.getElementById(id).classList.add('visible');
+    }
+
+    function validar(nombrePregunta, siguientePantalla, unicaOportunidad) {
+      const radios = document.getElementsByName(nombrePregunta);
+      for (const radio of radios) {
+        if (radio.checked && radio.value === 'correct') {
+          mostrarPantalla(siguientePantalla);
+          return;
+        } else if (radio.checked && radio.value === 'wrong') {
+          if (unicaOportunidad) {
+            alert("¡Parece que elegiste mal! Revisá las pistas y volvé a intentarlo.");
+            window.location.reload();
+          } else {
+            alert("¡Incorrecto! Probá de nuevo.");
+          }
+        }
+      }
+    }
+  </script>
+
+
+  <div class="pantalla" id="pantallaErrorCorrientes">
+    <h2>¿Corrientes? ¡Buen intento!</h2>
+    <div class="texto">
+      Corrientes es una provincia con abundantes ríos, playas y lagunas. Es famosa por el río Paraná, los Esteros del Iberá y su rica cultura chamamecera.<br><br>
+      Pero recordá: no limita con todas las provincias mencionadas ni tiene una bandera con verde, blanco y celeste.<br><br>
+      <strong>¡No te desanimes!</strong> Podés volver a intentarlo.
+    </div>
+    <button onclick="window.location.reload()">Volver a intentar</button>
+  </div>
+
+  <div class="pantalla" id="pantallaErrorBuenosAires">
+    <h2>¿Buenos Aires? Mmm... revisemos las pistas</h2>
+    <div class="texto">
+      Buenos Aires es una de las provincias más pobladas del país, con gran actividad agrícola, ganadera y portuaria. Pero no limita con Salta ni tiene los colores verde, blanco y celeste en su bandera.<br><br>
+      <strong>¡Seguí intentándolo!</strong> Cada error también te enseña.
+    </div>
+    <button onclick="window.location.reload()">Volver a intentar</button>
+  </div>
+
+  <div class="pantalla" id="pantallaErrorSantaCruz">
+    <h2>¿Santa Cruz? Estás muy al sur...</h2>
+    <div class="texto">
+      Santa Cruz es una provincia patagónica de paisajes increíbles, con glaciares como el Perito Moreno y fauna marina. Pero está lejos de Corrientes, Formosa y Salta.<br><br>
+      <strong>¡No pasa nada!</strong> Podés volver a empezar y aplicar lo aprendido.
+    </div>
+    <button onclick="window.location.reload()">Volver a intentar</button>
+  </div>
+
+  <script>
+    function validar(nombrePregunta, siguientePantalla, unicaOportunidad) {
+      const radios = document.getElementsByName(nombrePregunta);
+      for (const radio of radios) {
+        if (radio.checked && radio.value === 'correct') {
+          mostrarPantalla(siguientePantalla);
+          return;
+        } else if (radio.checked && radio.value === 'wrong') {
+          if (unicaOportunidad) {
+            const val = radio.parentElement.innerText.trim();
+            if (val.includes("Corrientes")) mostrarPantalla("pantallaErrorCorrientes");
+            else if (val.includes("Buenos Aires")) mostrarPantalla("pantallaErrorBuenosAires");
+            else if (val.includes("Santa Cruz")) mostrarPantalla("pantallaErrorSantaCruz");
+            else alert("Respuesta incorrecta");
+            return;
+          } else {
+            alert("¡Incorrecto! Probá de nuevo.");
+          }
+        }
+      }
+    }
+  </script>
+</body>
+
+</html>
